@@ -7,13 +7,13 @@ from urllib.parse import urljoin
 from flask_oauth import OAuth
 import requests
 import json
-
+import ginfo
 LOGIN_REDIRCT = '/cash_session'
 
 
 app = flask.Flask(__name__, static_url_path='', static_folder='../web/static', template_folder='../web/templates')
-app.config['GOOGLE_ID'] = '350802355428-83d26vllkpn4h8kkfl47f2dpgmea25ln.apps.googleusercontent.com'
-app.config['GOOGLE_SECRET'] = '88XepAKjJu1Rz77wX-JpZPMK'
+app.config['GOOGLE_ID'] = ginfo.ID
+app.config['GOOGLE_SECRET'] = ginfo.secret
 app.secret_key = 'dev'
 oauth = OAuth()
 
