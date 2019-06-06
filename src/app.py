@@ -7,7 +7,7 @@ from urllib.parse import urljoin
 from flask_oauth import OAuth
 import requests
 import json
-import ginfo
+import ginfo #This python file which is not tracked contains the api keys for google oauth so i can use google login to handle accounts so i do not have to handle passwords myself
 LOGIN_REDIRCT = '/cash_session'
 
 
