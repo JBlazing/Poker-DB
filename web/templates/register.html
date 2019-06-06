@@ -1,0 +1,49 @@
+<html>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        .win {
+            color: green;
+        }
+        .lose{
+            color: red;
+        }
+
+                label{
+            display:inline-block;
+            *display: inline;     /* for IE7*/
+            zoom:1;              /* for IE7*/
+            float: left;
+            padding-top: 5px;
+            text-align: right;
+            width: 140px;
+
+        }
+        input{
+            margin-top: 5px;
+            margin-bottom: 5px;
+            display:inline-block;
+            *display: inline;     /* for IE7*/
+            zoom:1;              /* for IE7*/
+            vertical-align:middle;
+            margin-left:20px
+        }
+        </style>
+
+
+    <body>
+    
+        <center>    
+        <div id="form">
+        <form action={{ url_for('register') }} method="POST">
+            <label for="email">Email:</label><input id=curtime type="datetime" name="email" value= {{email}} readonly><p>
+            <label for="intial">Inital Roll:</label><input type = "text" name="inital" pattern="([0-9])*"><p>
+            <input type="submit"  value="submit">
+        </form>
+        </div>
+        </center>
+
+
+    </body>
+</html>

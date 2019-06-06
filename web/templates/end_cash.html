@@ -1,0 +1,86 @@
+<html>
+    <style>
+    </style>
+    <body>
+        <center>
+            <form action="" method="POST">
+                <fieldset id="addremove">
+                <label for="DELETE">Delete Entry:</label><input type="radio" name="function" value="DELETE" onchange=del()>
+                <label for="ADD">End Session:</label><input type="radio" name="function" value="END" onchange="end()">
+                <label for="EDIT">Edit Session:</label><input type="radio" name="function" value="EDIT" onchange="edit()">
+                <div id=inputs>
+                </div>
+                <input type="submit" action="submit">
+            </fieldset>
+            </form>
+        </center>
+    </body>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+        var inputs = d3.select('#inputs');
+        function del(){
+            inputs.selectAll('*').remove() ;
+            
+        }
+        function end(){
+            
+            inputs.selectAll('*').remove();
+            
+            
+            inputs.append('label').attr('for', 'starttime').html("Start Time: ");
+            inputs.append('input')
+                    .attr('type',  'datetime')
+                    .attr('value' , '{{date}}')
+                    .attr('name' , 'starttime')
+                    .attr('readonly' , true);
+            inputs.append('p')
+            inputs.append('label').attr('for' , 'endtime' ).html('End Time: ')
+            inputs.append('input')
+                    .attr('type',  'datetime')
+                    .attr('name' , 'endtime')
+                    .attr('value' , function(){ return (new Date).toISOString()})
+            inputs.append('p')
+            inputs.append('label').attr('for' , 'cashout').html("Cashout: ")
+            inputs.append('input')
+                    .attr('type' , 'number')
+                    .attr('name' , 'cashout')
+                    .attr('size' , '5')
+
+        }
+
+        function edit(){
+            inputs.selectAll('*').remove();
+            
+            inputs.append('label').attr('for', 'starttime').html("Start Time: ");
+            inputs.append('input')
+                    .attr('type',  'datetime')
+                    .attr('value' , '{{date}}')
+                    .attr('name' , 'starttime')
+                    .attr('readonly' , true);
+            inputs.append('p')
+            inputs.append('label').attr('for', 'SB').html('SB: ')
+            inputs.append('input')
+                    .attr('name' , 'SB')
+                    .attr('type' , 'number')
+                    .attr('size' , 3)
+                    .attr('value' , {{entry.SB}})
+            inputs.append('p')
+            inputs.append('label').attr('for', 'BB').html('BB: ')
+            inputs.append('input')
+                    .attr('name' , 'BB')
+                    .attr('type' , 'number')
+                    .attr('size' , 3)
+                    .attr('value' , {{entry.BB}})
+            inputs.append('p')
+            inputs.append('label').attr('for' , 'buyin').html('Buyin: ')
+            inputs.append('input')
+                    .attr('type' , 'number')
+                    .attr('name' , 'buyin')
+                    .attr('size' , 5)
+                    .attr('value' , {{entry.Buyin}})
+            
+
+
+        }
+    </script>
+</html>

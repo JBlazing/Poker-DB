@@ -1,0 +1,49 @@
+<html>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        .win {
+            color: green;
+        }
+        .lose{
+            color: red;
+        }
+        </style>
+
+    <body>
+        
+        <center>
+        <a href="{{url_for('add_cash_session')}}">+ Add Session</a>
+        <table>
+
+            <tr>
+            {% for head in headers %}
+                <td>{{head}}</td>
+            {% endfor %}
+            </tr>
+            
+            {% for row , profit , start , end in rows %} 
+                <tr>
+                    <td>
+                        {% if row[0] != None %}
+                            <a href="{{url_for('end_cash_session' , date=row[0])}}">{{start}}</a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if end != None %}
+                            {{end}}
+                        {% endif %}
+                    </td>
+                {% for value in range(2, row|length) %}
+                    <td>{% if row[value] != None %}{{row[value]}}{% endif %}</td>
+                {% endfor %}   
+                    {% if profit != None %}
+                    <td{% if profit > 0.0 %} class="win" {% else %} class = "lose" {% endif %}>{{profit}}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+        </center>
+    </body>
+</html>
